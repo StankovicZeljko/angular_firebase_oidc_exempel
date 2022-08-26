@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,9 +15,9 @@ import { HomeComponent } from './components/home/home.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
+import { AuthModule } from '@auth0/auth0-angular';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     HomeComponent,
     LandingComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +38,12 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth())
+    AuthModule.forRoot({
+      domain: 'dev-qmu36h8g.us.auth0.com',
+      clientId: 'h6A0nK46cVztMPhyfuFrWYPdI8CHoIWs'
+    }),
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
