@@ -102,6 +102,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "angular_firebase_oidc_exempel:build:production",
+            "firebaseProject": "kommunikation-354711",
+            "firebaseHostingSite": "kommunikation-354711"
+          }
         }
       }
     }

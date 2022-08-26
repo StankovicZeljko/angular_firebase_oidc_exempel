@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kommunikation-354711": {
+      "hosting": {
+        "angular_firebase_oidc_exempel": [
+          "kommunikation-354711"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kommunikation-354711"
+  }
+}
