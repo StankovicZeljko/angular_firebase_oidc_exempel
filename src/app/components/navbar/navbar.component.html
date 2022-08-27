@@ -1,7 +1,23 @@
 <mat-toolbar>
-    Willkommen zur neuen Form der Schulkommunikation
-    <button mat-button (click)="loginWithRedirect()">
-        Login
-        <mat-icon>login</mat-icon>
-    </button>
+    <ng-container *ngIf="auth.user$ | async as user">
+        <h1>Willkommen {{user.email}}</h1>
+    </ng-container>
+
+    <ng-container *ngIf="!(auth.user$ | async)">
+        <h1>Willkommen zur neuen Schulkommunikation</h1>
+    </ng-container>
+
+    <ng-container *ngIf="(auth.isAuthenticated$ | async)">
+        <button mat-button (click)="logout()" color="primary">
+            Logout
+            <mat-icon>logout</mat-icon>
+        </button>
+    </ng-container>
+
+    <ng-container *ngIf="(auth.isAuthenticated$ | async) ==false">
+        <button mat-button (click)="loginWithRedirect()" color="primary">
+            Login
+            <mat-icon>login</mat-icon>
+        </button>
+    </ng-container>
 </mat-toolbar>

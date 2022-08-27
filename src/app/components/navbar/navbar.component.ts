@@ -1,6 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+
 
 @Component({
   selector: 'app-navbar',
@@ -9,26 +11,27 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class NavbarComponent implements OnInit {
 
+
   constructor(
     public auth: AuthService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    if (this.auth.isAuthenticated$) {
-      this.router.navigate(['/', 'home'])
-    }
+
   }
 
 
   loginWithRedirect() {
-    this.auth.loginWithRedirect();
-
-
+    this.auth.loginWithRedirect().subscribe(() => {
+      this.router.navigate(['home'])
+    });
   }
 
   logout() {
-    this.auth.logout({ returnTo: '' });
+    this.auth.logout({
+      returnTo: ''
+    });
   }
 
 }

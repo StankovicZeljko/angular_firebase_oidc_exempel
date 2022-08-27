@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 
 interface Item {
@@ -17,15 +19,12 @@ export class LandingComponent implements OnInit {
 
 
 
-  constructor() {
+  constructor(private auth: AuthService, private router: Router) {
 
 
   }
 
   ngOnInit(): void {
-
-
-
 
   }
 
